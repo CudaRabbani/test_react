@@ -12,7 +12,11 @@ class Layout extends Component {
                 </div>
                 <div className="container m-1">
                     <div className="row">
-                        <div className="col left-panel m-1">Sensor Drag and Drop List</div>
+                        <div className="col left-panel m-1">Input
+                        <div>
+                           <button/> 
+                        </div>
+                        </div>
                         <div className="col workspace-panel m-1">Workspace</div>
                         <div className="col right-panel m-1">Output</div>
                     </div>
