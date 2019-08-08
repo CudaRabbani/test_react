@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.custome-header {
+  height: 10%;
+}
+
+.full-layout {
+  background-color: cornflowerblue;
+ }
+
+.left-panel {
+  background-color: darkorange;
+}
+
+.right-panel {
+  background-color: darkorange;
+}
+
+.workspace-panel {
+  background-color: sandybrown;
+}
+
+.footer {
+  background-color: yellow;
+}
