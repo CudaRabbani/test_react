@@ -27,7 +27,7 @@ class Layout extends Component {
     onDrop = (e, sensor) => {
         const sensorID = e.dataTransfer.getData('sensorId');
         let currentWpSensors = this.state.workspaceSensors;
-        let wpSensor = this.state.inputSensors.filter (inSensor => parseInt(inSensor.id) === sensorID);
+        let wpSensor = this.state.inputSensors.filter (inSensor => inSensor.id == sensorID);
         wpSensor[0].space = 'workspace';
         currentWpSensors = [...currentWpSensors,...wpSensor];
         this.setState({workspaceSensors: currentWpSensors});
