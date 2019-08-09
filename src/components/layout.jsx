@@ -33,6 +33,10 @@ class Layout extends Component {
         currentWpSensors = [...currentWpSensors,...wpSensor];
         this.setState({workspaceSensors: currentWpSensors});
     };
+    onDelete = (sensorId) => {
+        let wpSensors = this.state.workspaceSensors.filter(s => s.id != sensorId);
+        this.setState({workspaceSensors: wpSensors});
+    };
     render() {
         return (
             <div className="container full-layout">
@@ -51,12 +55,13 @@ class Layout extends Component {
                             />
                         </div>
                         <div className="col workspace-panel m-1">
-                            Workspace
+                            Drag and Drop Sensors In This Area
                             <WorkSpace
                                 sensors={this.state.workspaceSensors}
                                 onDragStart={this.onDragStart}
                                 onDragOver={this.onDragOver}
                                 onDrop={this.onDrop}
+                                onDelete={this.onDelete}
                             />
                         </div>
                         <div className="col right-panel m-1">Output</div>

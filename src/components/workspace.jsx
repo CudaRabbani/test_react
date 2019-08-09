@@ -3,19 +3,19 @@ import Sensor from "./sensor";
 
 class WorkSpace extends Component {
     render() {
-        const {sensors, onDragOver, onDrop} = this.props;
+        const {sensors, onDragOver, onDrop, onDragStart, onDelete} = this.props;
         return (
             <div
                 className="droppable"
                 onDragOver={(e) =>onDragOver(e)}
                 onDrop={(e) => onDrop(e, "sensorId")}>
-                <h3>Sensors Added</h3>
                 {sensors.map(sensor =>
                     <Sensor
                         key={sensor.id}
                         label={sensor.name}
-                        onDragStart = {this.props.onDragStart}
+                        onDragStart = {onDragStart}
                         sensorId={sensor.id}
+                        onDelete = {onDelete}
                     />
                 )}
             </div>
