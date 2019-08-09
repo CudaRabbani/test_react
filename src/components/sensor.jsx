@@ -8,7 +8,7 @@ const Sensor = (props) => {
             <div draggable
                  onDragStart={(e)=>onDragStart(e, sensorId)}
                  className="draggable">
-                <button className="btn btn-default btn-md btn-block">
+                <button className="btn btn-secondary btn-md btn-block">
                     {label}
                 </button>
                 <br/>
@@ -18,12 +18,12 @@ const Sensor = (props) => {
     else {
         return (
             <div draggable
-                 onClick={()=>onDelete(sensorId)}
+                 onDragStart={(e)=>onDragStart(e, sensorId)}
                  className="draggable">
-                <button className="btn btn-default btn-md btn-block">
+                <button className="btn btn-primary btn-md btn-block">
                     {label}
                     <i className="fa fa-window-close pull-right"
-                       onDragStart={(e)=>onDragStart(e, sensorId)}
+                       onClick={()=>onDelete(sensorId)}
                        aria-hidden="true"></i>
                 </button>
                 <br/>
