@@ -17,23 +17,22 @@ code {
 }
 
 .full-layout {
-  background-color: cornflowerblue;
+  background-color: #e3f2fd;
  }
 
 .left-panel {
-  background-color: darkorange;
+  border: 1px solid cornflowerblue;
 }
 
 .right-panel {
-  background-color: darkorange;
+  border: 1px dotted dodgerblue;
 }
 
 .workspace-panel {
-  background-color: sandybrown;
+  border: 1px solid dodgerblue;
 }
 
 .footer {
-  background-color: yellow;
 }
 
 .droppable {
