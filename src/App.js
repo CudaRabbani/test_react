@@ -1,13 +1,13 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import Layout from "./components/layout";
 import Header from "./components/header";
 
 
 function App() {
+    console.log (React.version);
   return (
-    <main role="main" className="container" style={{backgroundColor: '#e3f2fd'}}>
+    <main role="main" className="container-fluid" style={{backgroundColor: '#e3f2fd'}}>
         <div className="row">
             <div className="col">
                 <Header/>

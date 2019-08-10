@@ -2,19 +2,20 @@ import React, {Component} from 'react';
 import SensorPanel from "./sensorpanel";
 import WorkSpace from "./workspace";
 
+
 class Layout extends Component {
 
     state = {
         inputSensors: [
-            {id: 1, name: 'Sensor 1', space: 'input'},
-            {id: 2, name: 'Sensor 2', space: 'input'},
-            {id: 3, name: 'Sensor 3', space: 'input'},
-            {id: 4, name: 'Sensor 4', space: 'input'},
-            {id: 5, name: 'Sensor 5', space: 'input'},
-            {id: 6, name: 'Sensor 6', space: 'input'},
-            {id: 7, name: 'Sensor 7', space: 'input'}
+            {id: 1, name: 'User', space: 'input'},
+            {id: 2, name: 'House', space: 'input'},
+            {id: 3, name: 'Bedroom', space: 'input'},
+            {id: 4, name: 'Living Room', space: 'input'},
+            {id: 5, name: 'Kitchen', space: 'input'},
+            {id: 6, name: 'Bathroom', space: 'input'},
+            {id: 7, name: 'Zone', space: 'input'}
         ],
-        workspaceSensors: []
+        workspaceSensors: [],
     };
 
 
@@ -36,18 +37,24 @@ class Layout extends Component {
         let wpSensors = this.state.workspaceSensors.filter(s => parseInt(s.id) !== sensorId);
         this.setState({workspaceSensors: wpSensors});
     };
+
+    addModalClose = () => {
+        this.setState({addModalShow: false});
+    };
+
     render() {
+
         return (
             <div>
                 <div className="row">
-                    <div className="col left-panel m-1">
+                    <div className="col-sm-2 left-panel m-1">
                         Input
                         <SensorPanel
                             sensors={this.state.inputSensors}
                             onDragStart={this.onDragStart}
                         />
                     </div>
-                    <div className="col workspace-panel m-1">
+                    <div className="col-sm-4 workspace-panel m-1">
                         Drag and Drop Sensors In This Area
                         <WorkSpace
                             sensors={this.state.workspaceSensors}
