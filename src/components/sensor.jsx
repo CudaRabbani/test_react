@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Sensor = (props) => {
-    const {label, sensorId, onDragStart, onDelete} = props;
+    const {label, sensorId, onDragStart, onDelete, onModal} = props;
     const d = onDelete ? true : false;
     if (!d) {
         return (
@@ -20,7 +20,10 @@ const Sensor = (props) => {
             <div draggable
                  onDragStart={(e)=>onDragStart(e, sensorId)}
                  className="draggable">
-                <button className="btn btn-primary btn-md btn-block">
+                <button
+                    className="btn btn-primary btn-md btn-block"
+                    onClick={()=>onModal(sensorId)}
+                >
                     {label}
                     <i className="fa fa-window-close pull-right"
                        onClick={()=>onDelete(sensorId)}
