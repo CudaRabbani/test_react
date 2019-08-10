@@ -6,13 +6,13 @@ class Layout extends Component {
 
     state = {
         inputSensors: [
-            {id: 1, name: 'Sensor 1', space: 'input'},
-            {id: 2, name: 'Sensor 2', space: 'input'},
-            {id: 3, name: 'Sensor 3', space: 'input'},
-            {id: 4, name: 'Sensor 4', space: 'input'},
-            {id: 5, name: 'Sensor 5', space: 'input'},
-            {id: 6, name: 'Sensor 6', space: 'input'},
-            {id: 7, name: 'Sensor 7', space: 'input'}
+            {id: 1, name: 'User', space: 'input'},
+            {id: 2, name: 'User', space: 'input'},
+            {id: 3, name: 'User', space: 'input'},
+            {id: 4, name: 'User', space: 'input'},
+            {id: 5, name: 'User', space: 'input'},
+            {id: 6, name: 'User', space: 'input'}
+            
         ],
         workspaceSensors: []
     };
