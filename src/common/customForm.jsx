@@ -3,20 +3,28 @@ import TextField from "./textfield";
 
 class CustomForm extends Component {
 
-    state = {
-        user: {name: '', age: ''}
-    };
+    constructor(props) {
+        super(props);
+        let {formId} = props;
+        this.state = {
+            formId: []
+        }
+    }
+
+    componentDidMount() {
+        this.setState({formId: this.props.formElement});
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {name, age} = this.state.user;
-        console.log('submitted', name, age);
+        let elements = this.props.formElement.map(elem => elem.id);
+        elements.map(element=>console.log(this.state.formId[element]));
     };
 
     handleChange = (e) => {
-        const user = {...this.state.user};
-        user[e.currentTarget.name] = e.currentTarget.value;
-        this.setState({user});
+        const formId = {...this.state.formId};
+        formId[e.currentTarget.name] = e.currentTarget.value;
+        this.setState({formId});
     };
 
 

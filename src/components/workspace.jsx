@@ -5,22 +5,43 @@ import CustomModal from "../common/customModal";
 
 class WorkSpace extends Component {
     state = {
-        userForm: false,
-        houseForm: false,
-        bedroomForm: false,
-        userModal: false
+        userModal: false,
+        houseModal: false,
     };
     userForm = [
             {id: 'name', label: 'Name', type: 'text'},
             {id: 'age', label: 'Age', type: 'text'}
         ];
+    houseForm = [
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
+    ];
+
 
     onModal = (sensorId) => {
         console.log('Showing modal', sensorId);
-        this.setState({userModal: true});
+        const currentModals = {
+            userModal: false,
+            houseModal: false
+        };
+        this.setState({currentModals});
+        switch (sensorId) {
+            case 1:
+                const user = this.state.userModal;
+                this.setState({userModal: !user});
+                break;
+            case 2:
+                const house = this.state.houseModal;
+                this.setState({houseModal: !house});
+                break;
+        }
     };
     onModalClose = () => {
-        this.setState({userModal: false})
+        const currentModals = {
+            userModal: false,
+            houseModal: false
+        };
+        this.setState({userModal: false, houseModal: false});
     };
     render() {
         const {sensors, onDragOver, onDrop, onDragStart, onDelete} = this.props;
@@ -37,8 +58,6 @@ class WorkSpace extends Component {
                         sensorId={sensor.id}
                         onDelete = {onDelete}
                         onModal={this.onModal}
-                        /*onForm={this.onForm}*/
-
                     />
                 )}
                 {this.state.userModal
@@ -47,6 +66,16 @@ class WorkSpace extends Component {
                         onHide={this.onModalClose}
                         formData={this.userForm}
                         formTitle='User Info'
+                        formId='user'
+                    />
+                    : null}
+                {this.state.houseModal
+                    ?<CustomModal
+                        show={this.state.houseModal}
+                        onHide={this.onModalClose}
+                        formData={this.houseForm}
+                        formTitle='House Info'
+                        formId='house'
                     />
                     : null}
             </div>
@@ -56,16 +85,3 @@ class WorkSpace extends Component {
 
 
 export default WorkSpace;
-
-/*
-{this.state.userModal
-                    ?<CustomModal
-                        show={this.state.userModal}
-                        onHide={this.onModalClose}
-                        formData={this.userForm}
-                        formTitle='User Info'
-                    />
-                    : null
-                }
-
- */
