@@ -7,6 +7,7 @@ class WorkSpace extends Component {
     state = {
         userModal: false,
         houseModal: false,
+        bedroomModal: false
     };
     userForm = [
             {id: 'name', label: 'Name', type: 'text'},
@@ -16,13 +17,18 @@ class WorkSpace extends Component {
         {id: 'house_no', label: 'House No', type: 'text'},
         {id: 'street_no', label: 'Street No', type: 'text'}
     ];
+    bedroomForm = [
+        {id: 'room_no', label: 'Room Type', type: 'text'},
+        {id: 'room_no', label: 'Room Type', type: 'text'}
+    ];
 
 
     onModal = (sensorId) => {
         console.log('Showing modal', sensorId);
         const currentModals = {
             userModal: false,
-            houseModal: false
+            houseModal: false,
+            bedroomModal: false,
         };
         this.setState({currentModals});
         switch (sensorId) {
@@ -34,12 +40,16 @@ class WorkSpace extends Component {
                 const house = this.state.houseModal;
                 this.setState({houseModal: !house});
                 break;
+            case 3:
+                const bedroom = this.state.bedroomModal;
+                this.setState({bedroomModal: !bedroom});
+                break;
             default:
                 break;
         }
     };
     onModalClose = () => {
-        this.setState({userModal: false, houseModal: false});
+        this.setState({userModal: false, houseModal: false, bedroomModal: false});
     };
     render() {
         const {sensors, onDragOver, onDrop, onDragStart, onDelete} = this.props;
@@ -74,6 +84,15 @@ class WorkSpace extends Component {
                         formData={this.houseForm}
                         formTitle='House Info'
                         formId='house'
+                    />
+                    : null}
+                    {this.state.bedroomModal
+                    ?<CustomModal
+                        show={this.state.bedroomModal}
+                        onHide={this.onModalClose}
+                        formData={this.bedroomForm}
+                        formTitle='BedRoom Info'
+                        formId='BedRoom Name'
                     />
                     : null}
             </div>
