@@ -6,7 +6,7 @@ class CustomModal extends Component {
 
     render() {
 
-        const {show, onHide, formData, formTitle, formId} = this.props;
+        const {onHide, formData, formTitle, formId} = this.props;
 
         return (
             <Modal
@@ -24,7 +24,7 @@ class CustomModal extends Component {
                     <CustomForm formElement={formData} formId={formId}/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={()=>this.props.onHide()}>Close</Button>
+                    <Button onClick={()=>onHide()}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );

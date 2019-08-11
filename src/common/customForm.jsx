@@ -5,7 +5,7 @@ class CustomForm extends Component {
 
     constructor(props) {
         super(props);
-        let {formId} = props;
+//        let {formId} = props;
         this.state = {
             formId: []
         }

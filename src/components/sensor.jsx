@@ -20,14 +20,14 @@ const Sensor = (props) => {
             <div draggable
                  onDragStart={(e)=>onDragStart(e, sensorId)}
                  className="draggable">
+                <i className="fa fa-window-close pull-right"
+                   onClick={()=>onDelete(sensorId)}
+                   aria-hidden="true"></i>
                 <button
-                    className="btn btn-primary btn-md btn-block"
+                    className="btn btn-primary btn-sm btn-block"
                     onClick={()=>onModal(sensorId)}
                 >
                     {label}
-                    <i className="fa fa-window-close pull-right"
-                       onClick={()=>onDelete(sensorId)}
-                       aria-hidden="true"></i>
                 </button>
                 <br/>
             </div>

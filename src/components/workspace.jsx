@@ -34,13 +34,11 @@ class WorkSpace extends Component {
                 const house = this.state.houseModal;
                 this.setState({houseModal: !house});
                 break;
+            default:
+                break;
         }
     };
     onModalClose = () => {
-        const currentModals = {
-            userModal: false,
-            houseModal: false
-        };
         this.setState({userModal: false, houseModal: false});
     };
     render() {
