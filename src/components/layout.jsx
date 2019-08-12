@@ -7,13 +7,18 @@ class Layout extends Component {
 
     state = {
         inputSensors: [
-            {id: 1, name: 'User', space: 'input'},
-            {id: 2, name: 'House', space: 'input'},
-            {id: 3, name: 'Bedroom', space: 'input'},
-            {id: 4, name: 'Living Room', space: 'input'},
-            {id: 5, name: 'Kitchen', space: 'input'},
-            {id: 6, name: 'Bathroom', space: 'input'},
-            {id: 7, name: 'Zone', space: 'input'}
+            {id: 1, name: 'User',source: 'user', space: 'input'},
+            {id: 2, name: 'House', source: 'house', space: 'input'},
+            {id: 3, name: 'BedRoom',source: 'room' ,space: 'input'},
+            {id: 4, name: 'LivingRoom',source: 'room', space: 'input'},
+            {id: 5, name: 'BathRoom', source: 'room', space: 'input'},
+            {id: 6, name: 'Kitchen', source: 'room', space: 'input'},
+            {id: 7, name: 'CookingZone',source: 'zone', space: 'input'},
+            {id: 8, name: 'SinkZone',source: 'zone' ,space: 'input'},
+            {id: 9, name: 'DoorZone', source: 'zone',space: 'input'},
+            {id: 10, name: 'Temperature',source: 'sensor' ,space: 'input'},
+            {id: 11, name: 'Pressure', source: 'sensor',space: 'input'},
+            {id: 12, name: 'Light', source: 'sensor',space: 'input'}
         ],
         workspaceSensors: [],
     };
