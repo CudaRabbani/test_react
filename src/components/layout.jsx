@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import SourcePanel from "./sourcepanel";
 import WorkSpace from "./workspace";
 
-
 class Layout extends Component {
 
     state = {
+<<<<<<< Updated upstream
         users: [
             {id: 1, name: 'User', space: 'input'}],
 
@@ -29,6 +29,18 @@ class Layout extends Component {
             {id: 3, name: 'Light', space: 'input'}],
 
     workspaceSources: [],
+=======
+        inputSensors: [
+            {id: 1, name: 'User', space: 'input'},
+            {id: 2, name: 'User', space: 'input'},
+            {id: 3, name: 'User', space: 'input'},
+            {id: 4, name: 'User', space: 'input'},
+            {id: 5, name: 'User', space: 'input'},
+            {id: 6, name: 'User', space: 'input'}
+            
+        ],
+        workspaceSensors: []
+>>>>>>> Stashed changes
     };
 
 
@@ -50,21 +62,23 @@ class Layout extends Component {
         let wpSources = this.state.workspaceSources.filter(s => parseInt(s.id) !== sourceId);
         this.setState({workspaceSources: wpSources});
     };
-
-    addModalClose = () => {
-        this.setState({addModalShow: false});
-    };
-
     render() {
-
         return (
             <div>
                 <div className="row">
+<<<<<<< Updated upstream
                     <div className="col-sm-2 left-panel m-1" >
                         <h4>Input Panel</h4>
                         <SourcePanel
                             sources={this.state.users}
                             onDragStart={this.onDragStart}  
+=======
+                    <div className="col left-panel m-1">
+                        Input
+                        <SensorPanel
+                            sensors={this.state.inputSensors}
+                            onDragStart={this.onDragStart}
+>>>>>>> Stashed changes
                         />
                        
                         <SourcePanel
@@ -92,8 +106,13 @@ class Layout extends Component {
                         />
 
                     </div>
+<<<<<<< Updated upstream
                     <div className="col-sm-4 workspace-panel m-1">
                         Workspace
+=======
+                    <div className="col workspace-panel m-1">
+                        Drag and Drop Sensors In This Area
+>>>>>>> Stashed changes
                         <WorkSpace
                             sources={this.state.workspaceSources}
                             onDragStart={this.onDragStart}
