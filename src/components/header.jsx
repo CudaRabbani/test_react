@@ -5,7 +5,7 @@ const Header = () => {
         <header>
             <div className="navbar navbar-dark" style={{backgroundColor: '#e3f2fd'}}>
                 <div className="container d-flex justify-content-between">
-                    <h2 className="title"> Smart Health Care System </h2>
+                    <h2 className="title"> Smart Care Solution </h2>
                 </div>
             </div>
         </header>

@@ -22,17 +22,21 @@ code {
 
 .left-panel {
   border: 1px solid cornflowerblue;
+  width: 33%;
 }
 
 .right-panel {
   border: 1px dotted dodgerblue;
+  width: 33%;
 }
 
 .workspace-panel {
   border: 1px solid dodgerblue;
+  width: 33%;
 }
 
 .footer {
+  height:20%;
 }
 
 .droppable {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Sensor from "./sensor";
+import Source from "./source";
 import CustomModal from "../common/customModal";
 
 
@@ -7,7 +7,17 @@ class WorkSpace extends Component {
     state = {
         userModal: false,
         houseModal: false,
-        bedroomModal: false
+        bedroomModal: false,
+        livingroomModal:false,
+        bathroomModal:false,
+        kitchenModal:false,
+        cookZoneModal: false,
+        sinkZoneModal:false,
+        doorZoneModal:false,
+        tempSensorModal: false,
+        pressureSensorMadal:false,
+        lightSensorModal:false
+        
     };
     userForm = [
             {id: 'name', label: 'Name', type: 'text'},
@@ -18,20 +28,66 @@ class WorkSpace extends Component {
         {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
-        {id: 'room_no', label: 'Room Type', type: 'text'},
-        {id: 'room_no', label: 'Room Type', type: 'text'}
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'room_name', label: 'Room Type', type: 'text'}
+    ];
+    livingroomForm = [
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'room_name', label: 'Room Type', type: 'text'}
+    ];
+    bathroomroomForm = [
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'room_name', label: 'Room Type', type: 'text'}
+    ];
+    kitchenForm = [
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'room_name', label: 'Room Type', type: 'text'}
+    ];
+    cookZoneForm = [
+        {id: 'zone_name', label: 'zone Name', type: 'text'},
+        {id: 'zone_name', label: 'zone Type', type: 'text'}
+    ];
+    sinkZoneForm = [
+        {id: 'zone_name', label: 'Room Name', type: 'text'},
+        {id: 'zone_name', label: 'zone Type', type: 'text'}
+    ];
+    doorZoneForm = [
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'zone_name', label: 'zone Type', type: 'text'}
+    ];
+    tempSensorForm = [
+        {id: 'sensor_name', label: 'sensor Name', type: 'text'},
+        {id: 'sensor_name', label: 'sensor Type', type: 'text'}
+    ];
+    pressureSensorForm = [
+        {id: 'room_name', label: 'sensor Name', type: 'text'},
+        {id: 'sensor_name', label: 'sensor Type', type: 'text'}
+    ];
+    lightSensorForm = [
+        {id: 'room_name', label: 'sensor Name', type: 'text'},
+        {id: 'sensor_name', label: 'sensor Type', type: 'text'}
     ];
 
 
-    onModal = (sensorId) => {
-        console.log('Showing modal', sensorId);
+    onModal = (sourceId) => {
+        console.log('Showing modal', sourceId);
         const currentModals = {
             userModal: false,
             houseModal: false,
             bedroomModal: false,
+            livingroomModal: false,
+            bathroomModal: false,
+            kitchenModal: false,
+            cookZoneModal: false,
+            sinkZoneModal: false,
+            doorZoneModal: false,
+            tempSensorModal: false,
+            pressureSensorModal: false,
+            lightSensorModal: false
+
         };
         this.setState({currentModals});
-        switch (sensorId) {
+        switch (sourceId) {
             case 1:
                 const user = this.state.userModal;
                 this.setState({userModal: !user});
@@ -44,26 +100,63 @@ class WorkSpace extends Component {
                 const bedroom = this.state.bedroomModal;
                 this.setState({bedroomModal: !bedroom});
                 break;
+            
+            case 4:
+                const livingroom = this.state.livingroomModal;
+                this.setState({livingroomModal: !livingroom});
+                break;
+            case 5:
+                const bathroom = this.state.bathroomModal;
+                this.setState({bathroomModal: !bathroom});
+                break;
+            case 6:
+                const kitchen = this.state.kitchenModal;
+                this.setState({kitchenModal: !kitchen});
+                break;
+            case 7:
+                const cookZone = this.state.cookZoneModal;
+                this.setState({cookZoneModal: !cookZone});
+                break;
+            case 8:
+                const sinkZone = this.state.sinkZoneModal;
+                this.setState({sinkZoneModal: !sinkZone});
+                break;
+                case 9:
+                const doorZone = this.state.doorZoneModal;
+                this.setState({doorZoneModal: !doorZone});
+                break;
+                case 10:
+                const tempSensor = this.state.tempSensorModal;
+                this.setState({tempSensorModal: !tempSensor});
+                break;
+                case 11:
+                const pressureSensor = this.state.pressureSensorModal;
+                this.setState({pressureSensorModal: !pressureSensor});
+                break;
+            case 12:
+                const lightSensor = this.state.lightSensorModal;
+                this.setState({lightSesnorModal: !lightSensor});
+                break;
             default:
                 break;
         }
     };
     onModalClose = () => {
-        this.setState({userModal: false, houseModal: false, bedroomModal: false});
+        this.setState({userModal: false, houseModal: false, bedroomModal: false, livingroomModal: false, bathroomModal: false, kitchenModal:false, cookZoneModal:false, sinkZoneModal:false, doorZoneModal:false, tempSensorModal:false, pressureSensorModal:false, lightSensorModal:false});
     };
     render() {
-        const {sensors, onDragOver, onDrop, onDragStart, onDelete} = this.props;
+        const {sources, onDragOver, onDrop, onDragStart, onDelete} = this.props;
         return (
             <div
                 className="droppable"
                 onDragOver={(e) =>onDragOver(e)}
-                onDrop={(e) => onDrop(e, "sensorId")}>
-                {sensors.map(sensor =>
-                    <Sensor
-                        key={sensor.id}
-                        label={sensor.name}
+                onDrop={(e) => onDrop(e, "sourceId")}>
+                {sources.map(source =>
+                    <Source
+                        key={source.id}
+                        label={source.name}
                         onDragStart = {onDragStart}
-                        sensorId={sensor.id}
+                        sourceId={source.id}
                         onDelete = {onDelete}
                         onModal={this.onModal}
                     />
@@ -86,15 +179,34 @@ class WorkSpace extends Component {
                         formId='house'
                     />
                     : null}
-                    {this.state.bedroomModal
+                    {this.state.kitchenModal
                     ?<CustomModal
-                        show={this.state.bedroomModal}
+                        show={this.state.kitchenModal}
                         onHide={this.onModalClose}
-                        formData={this.bedroomForm}
-                        formTitle='BedRoom Info'
-                        formId='BedRoom Name'
+                        formData={this.kitchenForm}
+                        formTitle='Kitchen Info'
+                        formId='room name'
                     />
                     : null}
+                    {this.state.sinkZoneModal
+                    ?<CustomModal
+                        show={this.state.sinkZoneModal}
+                        onHide={this.onModalClose}
+                        formData={this.sinkZoneForm}
+                        formTitle='BedRoom Info'
+                        formId='room name'
+                    />
+                    : null}
+                    {this.state.tempSensorModal
+                    ?<CustomModal
+                        show={this.state.tempSensorModal}
+                        onHide={this.onModalClose}
+                        formData={this.tempSensorForm}
+                        formTitle='Sensor Info'
+                        formId='Sensor Type'
+                    />
+                    : null}
+                 
             </div>
         );
     }

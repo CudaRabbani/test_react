@@ -1,41 +1,54 @@
 import React, {Component} from 'react';
-import SensorPanel from "./sensorpanel";
+import SourcePanel from "./sourcepanel";
 import WorkSpace from "./workspace";
 
 
 class Layout extends Component {
 
     state = {
-        inputSensors: [
-            {id: 1, name: 'User', space: 'input'},
-            {id: 2, name: 'House', space: 'input'},
-            {id: 3, name: 'Bedroom', space: 'input'},
-            {id: 4, name: 'Living Room', space: 'input'},
-            {id: 5, name: 'Kitchen', space: 'input'},
-            {id: 6, name: 'Bathroom', space: 'input'},
-            {id: 7, name: 'Zone', space: 'input'}
-        ],
-        workspaceSensors: [],
+        users: [
+            {id: 1, name: 'User', space: 'input'}],
+
+        house: [
+            {id: 1, name: 'House', space: 'input'}],
+
+        rooms: [
+            {id: 1, name: 'BedRoom', space: 'input'},
+            {id: 2, name: 'LivingRoom', space: 'input'},
+            {id: 3, name: 'BathRoom', space: 'input'},
+            {id: 4, name: 'Kitchen', space: 'input'}],
+
+        zones : [
+            {id: 1, name: 'CookingZone', space: 'input'},
+            {id: 2, name: 'SinkZone', space: 'input'},
+            {id: 3, name: 'DoorZone', space: 'input'}],
+
+        sensors : [
+            {id: 1, name: 'Temperature', space: 'input'},
+            {id: 2, name: 'Pressure', space: 'input'},
+            {id: 3, name: 'Light', space: 'input'}],
+
+    workspaceSources: [],
     };
 
 
-    onDragStart = (e, sensor) => {
-        e.dataTransfer.setData("sensorId", sensor);
+    onDragStart = (e, source) => {
+        e.dataTransfer.setData("sourceId", source);
     };
     onDragOver = (e) => {
         e.preventDefault();
     };
-    onDrop = (e, sensor) => {
-        const sensorID = e.dataTransfer.getData('sensorId');
-        let currentWpSensors = this.state.workspaceSensors;
-        let wpSensor = this.state.inputSensors.filter (inSensor => inSensor.id === parseInt(sensorID));
-        wpSensor[0].space = 'workspace';
-        currentWpSensors = [...currentWpSensors,...wpSensor];
-        this.setState({workspaceSensors: currentWpSensors});
+    onDrop = (e, source) => {
+        const sourceID = e.dataTransfer.getData('sourceId');
+        let currentWpSources = this.state.workspaceSources;
+        let wpSource = this.state.users.filter (inSource => inSource.id === parseInt(sourceID));
+        wpSource[0].space = 'workspace';
+        currentWpSources = [...currentWpSources,...wpSource];
+        this.setState({workspaceSources: currentWpSources});
     };
-    onDelete = (sensorId) => {
-        let wpSensors = this.state.workspaceSensors.filter(s => parseInt(s.id) !== sensorId);
-        this.setState({workspaceSensors: wpSensors});
+    onDelete = (sourceId) => {
+        let wpSources = this.state.workspaceSources.filter(s => parseInt(s.id) !== sourceId);
+        this.setState({workspaceSources: wpSources});
     };
 
     addModalClose = () => {
@@ -47,17 +60,42 @@ class Layout extends Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-sm-2 left-panel m-1">
-                        Input
-                        <SensorPanel
-                            sensors={this.state.inputSensors}
-                            onDragStart={this.onDragStart}
+                    <div className="col-sm-2 left-panel m-1" >
+                        <h4>Input Panel</h4>
+                        <SourcePanel
+                            sources={this.state.users}
+                            onDragStart={this.onDragStart}  
                         />
+                       
+                        <SourcePanel
+                            sources={this.state.house}
+                            onDragStart={this.onDragStart}  
+                        />
+                        <div> <h5> Room List</h5></div>
+                        <SourcePanel
+                        
+                            sources={this.state.rooms}
+                            onDragStart={this.onDragStart} />
+
+                        <div> <h5> Zones : </h5></div>
+
+                        <SourcePanel
+                        
+                        sources={this.state.zones}
+                        onDragStart={this.onDragStart}
+                        
+                    />
+                    <div><h5>Sensor List</h5></div>
+                     <SourcePanel
+                            sources={this.state.TemperatureSensor}
+                            onDragStart={this.onDragStart}  
+                        />
+
                     </div>
                     <div className="col-sm-4 workspace-panel m-1">
-                        Drag and Drop Sensors In This Area
+                        Workspace
                         <WorkSpace
-                            sensors={this.state.workspaceSensors}
+                            sources={this.state.workspaceSources}
                             onDragStart={this.onDragStart}
                             onDragOver={this.onDragOver}
                             onDrop={this.onDrop}
