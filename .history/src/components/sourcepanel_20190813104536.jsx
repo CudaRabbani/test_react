@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
-import Source from "./source";
+import Sensor from "./sensor";
 
-class SourcePanel extends Component {
+class SensorPanel extends Component {
     render() {
         return (
             <div>
-                {this.props.sources.map(s =>
-                    <Source
+                {this.props.sensors.map(s =>
+                    <Sensor
                         key={s.id}
                         label={s.name}
                         onDragStart = {this.props.onDragStart}
-                        sourceId={s.id}
+                        sensorId={s.id}
                     />
                 )}
             </div>
         );
     }
 }
+
+
+
 
 export default SourcePanel;

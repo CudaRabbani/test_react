@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Source from "./source";
+import Sensor from "./sensor";
 import CustomModal from "../common/customModal";
 
 
@@ -23,8 +23,8 @@ class WorkSpace extends Component {
         {id: 'age', label: 'Age', type: 'text'}
     ];
     houseForm = [
-        {id: 'house_number', label: 'House Number', type: 'text'},
-        {id: 'house_name', label: 'House Name', type: 'text'}
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
         {id: 'bedroom_name', label: 'Room Name', type: 'text'},
@@ -51,25 +51,25 @@ class WorkSpace extends Component {
         {id: 'sink_type', label: 'zone Type', type: 'text'}
     ];
     doorZoneForm = [
-        {id: 'door_name', label: 'doorzone Name', type: 'text'},
+        {id: 'door_name', label: 'Room Name', type: 'text'},
         {id: 'foor_type', label: 'zone Type', type: 'text'}
     ];
     tempSensorForm = [
-        {id: 'temp_name', label: 'temosensor Name', type: 'text'},
+        {id: 'temp_name', label: 'sensor Name', type: 'text'},
         {id: 'temp_type', label: 'sensor Type', type: 'text'}
     ];
     pressureSensorForm = [
-        {id: 'pressure_name', label: 'pressuresensor Name', type: 'text'},
+        {id: 'pressure_name', label: 'sensor Name', type: 'text'},
         {id: 'pressure_type', label: 'sensor Type', type: 'text'}
     ];
     lightSensorForm = [
-        {id: 'light_name', label: 'lightsensor Name', type: 'text'},
+        {id: 'light_name', label: 'sensor Name', type: 'text'},
         {id: 'light_type', label: 'sensor Type', type: 'text'}
     ];
 
 
-    onModal = (sourceId) => {
-        console.log('Showing modal', sourceId);
+    onModal = (sensorId) => {
+        console.log('Showing modal', sensorId);
         const currentModals = {
             userModal: false,
             houseModal: false,
@@ -82,10 +82,10 @@ class WorkSpace extends Component {
             doorZoneModal: false,
             tempSensorModal: false,
             pressureSensorModal: false,
-            lightSensorModal: false,
+            lightSensorModal: false
         };
         this.setState({currentModals});
-        switch (sourceId) {
+        switch (sensorId) {
             case 1:
                 const user = this.state.userModal;
                 this.setState({userModal: !user});
@@ -133,7 +133,7 @@ class WorkSpace extends Component {
                 break;
             case 12:
                 const lightSensor = this.state.lightSensorModal;
-                this.setState({lightSensorModal: !lightSensor});
+                this.setState({lightSesnorModal: !lightSensor});
                 break;
             default:
                 break;
@@ -153,18 +153,18 @@ class WorkSpace extends Component {
             });
     };
     render() {
-        const {sources, onDragOver, onDrop, onDragStart, onDelete} = this.props;
+        const {sensors, onDragOver, onDrop, onDragStart, onDelete} = this.props;
         return (
             <div
                 className="droppable"
                 onDragOver={(e) =>onDragOver(e)}
-                onDrop={(e) => onDrop(e, "sourceId")}>
-                {sources.map(source =>
-                    <Source
-                        key={source.id}
-                        label={source.name}
+                onDrop={(e) => onDrop(e, "sensorId")}>
+                {sensors.map(sensor =>
+                    <Sensor
+                        key={sensor.id}
+                        label={sensor.name}
                         onDragStart = {onDragStart}
-                        sourceId={source.id}
+                        sensorId={sensor.id}
                         onDelete = {onDelete}
                         onModal={this.onModal}
                     />
@@ -187,49 +187,13 @@ class WorkSpace extends Component {
                         formId='house'
                     />
                     : null}
-                    {this.state.bedroomModal
-                    ?<CustomModal
-                        show={this.state.bedroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.bedroomForm}
-                        formTitle='bedroom Info'
-                        formId='bedroom name'
-                    />
-                    : null}
-                {this.state.livingroomModal
-                    ?<CustomModal
-                        show={this.state.livingroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.livingroomForm}
-                        formTitle='livingroom Info'
-                        formId='livingroom name'
-                    />
-                    : null}
-                    {this.state.bathroomModal
-                    ?<CustomModal
-                        show={this.state.bathroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.bathroomForm}
-                        formTitle='bathroom Info'
-                        formId='bathroom name'
-                    />
-                    : null}
-                    {this.state.kitchenModal
+                {this.state.kitchenModal
                     ?<CustomModal
                         show={this.state.kitchenModal}
                         onHide={this.onModalClose}
                         formData={this.kitchenForm}
                         formTitle='Kitchen Info'
                         formId='kitechen name'
-                    />
-                    : null}
-                    {this.state.cookZoneModal
-                    ?<CustomModal
-                        show={this.state.cookZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.cookZoneForm}
-                        formTitle='cookZone Info'
-                        formId='cookZone name'
                     />
                     : null}
                 {this.state.sinkZoneModal
@@ -241,16 +205,6 @@ class WorkSpace extends Component {
                         formId='sink name'
                     />
                     : null}
-                    {this.state.doorZoneModal
-                    ?<CustomModal
-                        show={this.state.doorZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.doorZoneForm}
-                        formTitle='doorZone Info'
-                        formId='doorzone name'
-                    />
-                    : null}
-
                 {this.state.tempSensorModal
                     ?<CustomModal
                         show={this.state.tempSensorModal}
@@ -258,24 +212,6 @@ class WorkSpace extends Component {
                         formData={this.tempSensorForm}
                         formTitle='Sensor Info'
                         formId='Sensor Type'
-                    />
-                    : null}
-                    {this.state.pressureSensorModal
-                    ?<CustomModal
-                        show={this.state.pressureSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.pressureSensorForm}
-                        formTitle='pressureSensor Info'
-                        formId='pressureSensor name'
-                    />
-                    : null}
-                    {this.state.lightSensorModal
-                    ?<CustomModal
-                        show={this.state.lightSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.lightSensorForm}
-                        formTitle='lightSensor Info'
-                        formId='lightSensor name'
                     />
                     : null}
             </div>

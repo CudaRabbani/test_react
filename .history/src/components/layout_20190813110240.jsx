@@ -4,20 +4,6 @@ import WorkSpace from "./workspace";
 
 
 class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "hello world" };
-    }
-    
-    callAPI() {
-        fetch("http://localhost:8300/house")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
-    }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
 
     state = {
         inputSources: [
@@ -36,9 +22,6 @@ class Layout extends Component {
         ],
         workspaceSources: [],
     };
-
-
-
 
 
     onDragStart = (e, source) => {
@@ -72,7 +55,7 @@ class Layout extends Component {
                     <div className="col-sm-2 left-panel m-1">
                         Input
                         <SourcePanel
-                            sources={this.state.inputSources}
+                            sources={this.state.inputSensors}
                             onDragStart={this.onDragStart}
                         />
                     </div>
@@ -89,11 +72,8 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
-           
         );
-       
     }
 }
 

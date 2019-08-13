@@ -10,7 +10,7 @@ class SourcePanel extends Component {
                         key={s.id}
                         label={s.name}
                         onDragStart = {this.props.onDragStart}
-                        sourceId={s.id}
+                        sensorId={s.id}
                     />
                 )}
             </div>

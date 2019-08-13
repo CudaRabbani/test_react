@@ -1,26 +1,12 @@
 import React, {Component} from 'react';
-import SourcePanel from "./sourcepanel";
+import SensorPanel from "./sensorpanel";
 import WorkSpace from "./workspace";
 
 
 class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "hello world" };
-    }
-    
-    callAPI() {
-        fetch("http://localhost:8300/house")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
-    }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
 
     state = {
-        inputSources: [
+        inputSensors: [
             {id: 1, name: 'User',source: 'user', space: 'input'},
             {id: 2, name: 'House', source: 'house', space: 'input'},
             {id: 3, name: 'BedRoom',source: 'room' ,space: 'input'},
@@ -34,30 +20,27 @@ class Layout extends Component {
             {id: 11, name: 'Pressure', source: 'sensor',space: 'input'},
             {id: 12, name: 'Light', source: 'sensor',space: 'input'}
         ],
-        workspaceSources: [],
+        workspaceSensors: [],
     };
 
 
-
-
-
-    onDragStart = (e, source) => {
-        e.dataTransfer.setData("sourceId", source);
+    onDragStart = (e, sensor) => {
+        e.dataTransfer.setData("sensorId", sensor);
     };
     onDragOver = (e) => {
         e.preventDefault();
     };
-    onDrop = (e, source) => {
-        const sourceID = e.dataTransfer.getData('sourceId');
-        let currentWpSources = this.state.workspaceSources;
-        let wpSource = this.state.inputSources.filter (inSource => inSource.id === parseInt(sourceID));
-        wpSource[0].space = 'workspace';
-        currentWpSources = [...currentWpSources,...wpSource];
-        this.setState({workspaceSources: currentWpSources});
+    onDrop = (e, sensor) => {
+        const sensorID = e.dataTransfer.getData('sensorId');
+        let currentWpSensors = this.state.workspaceSensors;
+        let wpSensor = this.state.inputSensors.filter (inSensor => inSensor.id === parseInt(sensorID));
+        wpSensor[0].space = 'workspace';
+        currentWpSensors = [...currentWpSensors,...wpSensor];
+        this.setState({workspaceSensors: currentWpSensors});
     };
-    onDelete = (sourceId) => {
-        let wpSources = this.state.workspaceSources.filter(s => parseInt(s.id) !== sourceId);
-        this.setState({workspaceSources: wpSources});
+    onDelete = (sensorId) => {
+        let wpSensors = this.state.workspaceSensors.filter(s => parseInt(s.id) !== sensorId);
+        this.setState({workspaceSensors: wpSensors});
     };
 
     addModalClose = () => {
@@ -71,15 +54,15 @@ class Layout extends Component {
                 <div className="row">
                     <div className="col-sm-2 left-panel m-1">
                         Input
-                        <SourcePanel
-                            sources={this.state.inputSources}
+                        <SensorPanel
+                            sensors={this.state.inputSensors}
                             onDragStart={this.onDragStart}
                         />
                     </div>
                     <div className="col-sm-4 workspace-panel m-1">
-                        Workspace
+                        Drag and Drop Sensors In This Area
                         <WorkSpace
-                            sources={this.state.workspaceSources}
+                            sensors={this.state.workspaceSensors}
                             onDragStart={this.onDragStart}
                             onDragOver={this.onDragOver}
                             onDrop={this.onDrop}
@@ -89,11 +72,8 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
-           
         );
-       
     }
 }
 

@@ -17,54 +17,55 @@ class WorkSpace extends Component {
         tempSensorModal: false,
         pressureSensorMadal:false,
         lightSensorModal:false
+        
     };
     userForm = [
-        {id: 'name', label: 'Name', type: 'text'},
-        {id: 'age', label: 'Age', type: 'text'}
-    ];
+            {id: 'name', label: 'Name', type: 'text'},
+            {id: 'age', label: 'Age', type: 'text'}
+        ];
     houseForm = [
-        {id: 'house_number', label: 'House Number', type: 'text'},
-        {id: 'house_name', label: 'House Name', type: 'text'}
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
         {id: 'bedroom_name', label: 'Room Name', type: 'text'},
-        {id: 'debroom_type', label: 'Room Type', type: 'text'}
+        {id: 'bedroom_name', label: 'bedRoom Type', type: 'text'}
     ];
     livingroomForm = [
         {id: 'livingroom_name', label: 'Room Name', type: 'text'},
-        {id: 'livingroom_type', label: 'Room Type', type: 'text'}
+        {id: 'livingroom_name', label: 'Room Type', type: 'text'}
     ];
-    bathroomForm = [
-        {id: 'batchroom_name', label: 'Room Name', type: 'text'},
-        {id: 'bathroom_type', label: 'Room Type', type: 'text'}
+    bathroomroomForm = [
+        {id: 'room_name', label: 'Room Name', type: 'text'},
+        {id: 'room_name', label: 'Room Type', type: 'text'}
     ];
     kitchenForm = [
-        {id: 'kitchen_room', label: 'Room Name', type: 'text'},
-        {id: 'kitchen_type', label: 'Room Type', type: 'text'}
+        {id: 'bathroom_name', label: 'Room Name', type: 'text'},
+        {id: 'bathroom_name', label: 'Room Type', type: 'text'}
     ];
     cookZoneForm = [
-        {id: 'cook_name', label: 'zone Name', type: 'text'},
-        {id: 'cook_type', label: 'zone Type', type: 'text'}
+        {id: 'cookZonezone_name', label: 'zone Name', type: 'text'},
+        {id: 'cookZonezone_name', label: 'zone Type', type: 'text'}
     ];
     sinkZoneForm = [
-        {id: 'sink_name', label: 'Room Name', type: 'text'},
-        {id: 'sink_type', label: 'zone Type', type: 'text'}
+        {id: 'sinkzone_name', label: 'Room Name', type: 'text'},
+        {id: 'sinkzone_name', label: 'zone Type', type: 'text'}
     ];
     doorZoneForm = [
-        {id: 'door_name', label: 'doorzone Name', type: 'text'},
-        {id: 'foor_type', label: 'zone Type', type: 'text'}
+        {id: 'doorZone_name', label: 'Room Name', type: 'text'},
+        {id: 'doorzone_name', label: 'zone Type', type: 'text'}
     ];
     tempSensorForm = [
-        {id: 'temp_name', label: 'temosensor Name', type: 'text'},
-        {id: 'temp_type', label: 'sensor Type', type: 'text'}
+        {id: 'tempsensor_name', label: 'sensor Name', type: 'text'},
+        {id: 'tempsensor_name', label: 'sensor Type', type: 'text'}
     ];
     pressureSensorForm = [
-        {id: 'pressure_name', label: 'pressuresensor Name', type: 'text'},
-        {id: 'pressure_type', label: 'sensor Type', type: 'text'}
+        {id: 'pressureroom_name', label: 'sensor Name', type: 'text'},
+        {id: 'pressuresensor_name', label: 'sensor Type', type: 'text'}
     ];
     lightSensorForm = [
-        {id: 'light_name', label: 'lightsensor Name', type: 'text'},
-        {id: 'light_type', label: 'sensor Type', type: 'text'}
+        {id: 'lightroom_name', label: 'sensor Name', type: 'text'},
+        {id: 'lightsensor_name', label: 'sensor Type', type: 'text'}
     ];
 
 
@@ -82,7 +83,8 @@ class WorkSpace extends Component {
             doorZoneModal: false,
             tempSensorModal: false,
             pressureSensorModal: false,
-            lightSensorModal: false,
+            lightSensorModal: false
+
         };
         this.setState({currentModals});
         switch (sourceId) {
@@ -98,7 +100,7 @@ class WorkSpace extends Component {
                 const bedroom = this.state.bedroomModal;
                 this.setState({bedroomModal: !bedroom});
                 break;
-
+            
             case 4:
                 const livingroom = this.state.livingroomModal;
                 this.setState({livingroomModal: !livingroom});
@@ -123,7 +125,7 @@ class WorkSpace extends Component {
                 const doorZone = this.state.doorZoneModal;
                 this.setState({doorZoneModal: !doorZone});
                 break;
-            case 10:
+             case 10:
                 const tempSensor = this.state.tempSensorModal;
                 this.setState({tempSensorModal: !tempSensor});
                 break;
@@ -133,24 +135,14 @@ class WorkSpace extends Component {
                 break;
             case 12:
                 const lightSensor = this.state.lightSensorModal;
-                this.setState({lightSensorModal: !lightSensor});
+                this.setState({lightSesnorModal: !lightSensor});
                 break;
             default:
                 break;
         }
     };
     onModalClose = () => {
-        this.setState(
-            {
-                userModal: false, houseModal: false,
-                bedroomModal: false, livingroomModal: false,
-                bathroomModal: false, kitchenModal: false, cookZoneModal: false,
-                sinkZoneModal: false,
-                doorZoneModal: false,
-                tempSensorModal: false,
-                pressureSensorModal: false,
-                lightSensorModal: false
-            });
+        this.setState({userModal: false, houseModal: false, bedroomModal: false, livingroomModal: false, bathroomModal: false, kitchenModal:false, cookZoneModal:false, sinkZoneModal:false, doorZoneModal:false, tempSensorModal:false, pressureSensorModal:false, lightSensorModal:false});
     };
     render() {
         const {sources, onDragOver, onDrop, onDragStart, onDelete} = this.props;
@@ -187,71 +179,25 @@ class WorkSpace extends Component {
                         formId='house'
                     />
                     : null}
-                    {this.state.bedroomModal
-                    ?<CustomModal
-                        show={this.state.bedroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.bedroomForm}
-                        formTitle='bedroom Info'
-                        formId='bedroom name'
-                    />
-                    : null}
-                {this.state.livingroomModal
-                    ?<CustomModal
-                        show={this.state.livingroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.livingroomForm}
-                        formTitle='livingroom Info'
-                        formId='livingroom name'
-                    />
-                    : null}
-                    {this.state.bathroomModal
-                    ?<CustomModal
-                        show={this.state.bathroomModal}
-                        onHide={this.onModalClose}
-                        formData={this.bathroomForm}
-                        formTitle='bathroom Info'
-                        formId='bathroom name'
-                    />
-                    : null}
                     {this.state.kitchenModal
                     ?<CustomModal
                         show={this.state.kitchenModal}
                         onHide={this.onModalClose}
                         formData={this.kitchenForm}
                         formTitle='Kitchen Info'
-                        formId='kitechen name'
+                        formId='room name'
                     />
                     : null}
-                    {this.state.cookZoneModal
-                    ?<CustomModal
-                        show={this.state.cookZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.cookZoneForm}
-                        formTitle='cookZone Info'
-                        formId='cookZone name'
-                    />
-                    : null}
-                {this.state.sinkZoneModal
+                    {this.state.sinkZoneModal
                     ?<CustomModal
                         show={this.state.sinkZoneModal}
                         onHide={this.onModalClose}
                         formData={this.sinkZoneForm}
-                        formTitle='Sink Zone Info'
-                        formId='sink name'
+                        formTitle='BedRoom Info'
+                        formId='room name'
                     />
                     : null}
-                    {this.state.doorZoneModal
-                    ?<CustomModal
-                        show={this.state.doorZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.doorZoneForm}
-                        formTitle='doorZone Info'
-                        formId='doorzone name'
-                    />
-                    : null}
-
-                {this.state.tempSensorModal
+                    {this.state.tempSensorModal
                     ?<CustomModal
                         show={this.state.tempSensorModal}
                         onHide={this.onModalClose}
@@ -260,24 +206,7 @@ class WorkSpace extends Component {
                         formId='Sensor Type'
                     />
                     : null}
-                    {this.state.pressureSensorModal
-                    ?<CustomModal
-                        show={this.state.pressureSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.pressureSensorForm}
-                        formTitle='pressureSensor Info'
-                        formId='pressureSensor name'
-                    />
-                    : null}
-                    {this.state.lightSensorModal
-                    ?<CustomModal
-                        show={this.state.lightSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.lightSensorForm}
-                        formTitle='lightSensor Info'
-                        formId='lightSensor name'
-                    />
-                    : null}
+                 
             </div>
         );
     }

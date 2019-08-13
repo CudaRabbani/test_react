@@ -23,8 +23,8 @@ class WorkSpace extends Component {
         {id: 'age', label: 'Age', type: 'text'}
     ];
     houseForm = [
-        {id: 'house_number', label: 'House Number', type: 'text'},
-        {id: 'house_name', label: 'House Name', type: 'text'}
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
         {id: 'bedroom_name', label: 'Room Name', type: 'text'},
@@ -51,19 +51,19 @@ class WorkSpace extends Component {
         {id: 'sink_type', label: 'zone Type', type: 'text'}
     ];
     doorZoneForm = [
-        {id: 'door_name', label: 'doorzone Name', type: 'text'},
+        {id: 'door_name', label: 'Room Name', type: 'text'},
         {id: 'foor_type', label: 'zone Type', type: 'text'}
     ];
     tempSensorForm = [
-        {id: 'temp_name', label: 'temosensor Name', type: 'text'},
+        {id: 'temp_name', label: 'sensor Name', type: 'text'},
         {id: 'temp_type', label: 'sensor Type', type: 'text'}
     ];
     pressureSensorForm = [
-        {id: 'pressure_name', label: 'pressuresensor Name', type: 'text'},
+        {id: 'pressure_name', label: 'sensor Name', type: 'text'},
         {id: 'pressure_type', label: 'sensor Type', type: 'text'}
     ];
     lightSensorForm = [
-        {id: 'light_name', label: 'lightsensor Name', type: 'text'},
+        {id: 'light_name', label: 'sensor Name', type: 'text'},
         {id: 'light_type', label: 'sensor Type', type: 'text'}
     ];
 
@@ -82,7 +82,7 @@ class WorkSpace extends Component {
             doorZoneModal: false,
             tempSensorModal: false,
             pressureSensorModal: false,
-            lightSensorModal: false,
+            lightSensorModal: false
         };
         this.setState({currentModals});
         switch (sourceId) {
@@ -133,7 +133,7 @@ class WorkSpace extends Component {
                 break;
             case 12:
                 const lightSensor = this.state.lightSensorModal;
-                this.setState({lightSensorModal: !lightSensor});
+                this.setState({lightSesnorModal: !lightSensor});
                 break;
             default:
                 break;
@@ -223,15 +223,6 @@ class WorkSpace extends Component {
                         formId='kitechen name'
                     />
                     : null}
-                    {this.state.cookZoneModal
-                    ?<CustomModal
-                        show={this.state.cookZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.cookZoneForm}
-                        formTitle='cookZone Info'
-                        formId='cookZone name'
-                    />
-                    : null}
                 {this.state.sinkZoneModal
                     ?<CustomModal
                         show={this.state.sinkZoneModal}
@@ -241,16 +232,6 @@ class WorkSpace extends Component {
                         formId='sink name'
                     />
                     : null}
-                    {this.state.doorZoneModal
-                    ?<CustomModal
-                        show={this.state.doorZoneModal}
-                        onHide={this.onModalClose}
-                        formData={this.doorZoneForm}
-                        formTitle='doorZone Info'
-                        formId='doorzone name'
-                    />
-                    : null}
-
                 {this.state.tempSensorModal
                     ?<CustomModal
                         show={this.state.tempSensorModal}
@@ -258,24 +239,6 @@ class WorkSpace extends Component {
                         formData={this.tempSensorForm}
                         formTitle='Sensor Info'
                         formId='Sensor Type'
-                    />
-                    : null}
-                    {this.state.pressureSensorModal
-                    ?<CustomModal
-                        show={this.state.pressureSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.pressureSensorForm}
-                        formTitle='pressureSensor Info'
-                        formId='pressureSensor name'
-                    />
-                    : null}
-                    {this.state.lightSensorModal
-                    ?<CustomModal
-                        show={this.state.lightSensorModal}
-                        onHide={this.onModalClose}
-                        formData={this.lightSensorForm}
-                        formTitle='lightSensor Info'
-                        formId='lightSensor name'
                     />
                     : null}
             </div>

@@ -5,12 +5,12 @@ class SourcePanel extends Component {
     render() {
         return (
             <div>
-                {this.props.sources.map(s =>
-                    <Source
+                {this.props.sensors.map(s =>
+                    <Sensor
                         key={s.id}
                         label={s.name}
                         onDragStart = {this.props.onDragStart}
-                        sourceId={s.id}
+                        sensorId={s.id}
                     />
                 )}
             </div>

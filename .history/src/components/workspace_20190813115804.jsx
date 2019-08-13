@@ -23,8 +23,8 @@ class WorkSpace extends Component {
         {id: 'age', label: 'Age', type: 'text'}
     ];
     houseForm = [
-        {id: 'house_number', label: 'House Number', type: 'text'},
-        {id: 'house_name', label: 'House Name', type: 'text'}
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
         {id: 'bedroom_name', label: 'Room Name', type: 'text'},
@@ -133,7 +133,7 @@ class WorkSpace extends Component {
                 break;
             case 12:
                 const lightSensor = this.state.lightSensorModal;
-                this.setState({lightSensorModal: !lightSensor});
+                this.setState({lightSesnorModal: !lightSensor});
                 break;
             default:
                 break;

@@ -4,20 +4,6 @@ import WorkSpace from "./workspace";
 
 
 class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "hello world" };
-    }
-    
-    callAPI() {
-        fetch("http://localhost:8300/house")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
-    }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
 
     state = {
         inputSources: [
@@ -25,20 +11,20 @@ class Layout extends Component {
             {id: 2, name: 'House', source: 'house', space: 'input'},
             {id: 3, name: 'BedRoom',source: 'room' ,space: 'input'},
             {id: 4, name: 'LivingRoom',source: 'room', space: 'input'},
-            {id: 5, name: 'BathRoom', source: 'room', space: 'input'},
-            {id: 6, name: 'Kitchen', source: 'room', space: 'input'},
-            {id: 7, name: 'CookingZone',source: 'zone', space: 'input'},
-            {id: 8, name: 'SinkZone',source: 'zone' ,space: 'input'},
-            {id: 9, name: 'DoorZone', source: 'zone',space: 'input'},
-            {id: 10, name: 'Temperature',source: 'sensor' ,space: 'input'},
-            {id: 11, name: 'Pressure', source: 'sensor',space: 'input'},
-            {id: 12, name: 'Light', source: 'sensor',space: 'input'}
-        ],
-        workspaceSources: [],
-    };
+            {id: 5, name: 'LivingRoom',source: 'room', space: 'input'},
+            {id: 6, name: 'LivingRoom',source: 'room', space: 'input'},
+            {id: 7, name: 'BathRoom', source: 'room', space: 'input'},
+            {id: 8, name: 'Kitchen', source: 'room', space: 'input'},
+            {id: 9, name: 'CookingZone',source: 'zone', space: 'input'},
+            {id: 10, name: 'SinkZone',source: 'zone' ,space: 'input'},
+            {id: 11, name: 'DoorZone', source: 'zone',space: 'input'},
+            {id: 11, name: 'Temperature',source: 'sensor' ,space: 'input'},
+            {id: 12, name: 'Pressure', source: 'sensor',space: 'input'},
+            {id: 13, name: 'Light', source: 'sensor',space: 'input'}
+            ],
 
-
-
+    workspaceSources: [],
+};
 
 
     onDragStart = (e, source) => {
@@ -50,7 +36,7 @@ class Layout extends Component {
     onDrop = (e, source) => {
         const sourceID = e.dataTransfer.getData('sourceId');
         let currentWpSources = this.state.workspaceSources;
-        let wpSource = this.state.inputSources.filter (inSource => inSource.id === parseInt(sourceID));
+        let wpSource = this.state.users.filter (inSource => inSource.id === parseInt(sourceID));
         wpSource[0].space = 'workspace';
         currentWpSources = [...currentWpSources,...wpSource];
         this.setState({workspaceSources: currentWpSources});
@@ -69,12 +55,37 @@ class Layout extends Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-sm-2 left-panel m-1">
-                        Input
+                    <div className="col-sm-2 left-panel m-1" >
+                        <h4>Input Panel</h4>
                         <SourcePanel
-                            sources={this.state.inputSources}
-                            onDragStart={this.onDragStart}
+                            sources={this.state.user}
+                            onDragStart={this.onDragStart}  
                         />
+                       
+                        <SourcePanel
+                            sources={this.state.house}
+                            onDragStart={this.onDragStart}  
+                        />
+                        <div> <h5> Room List</h5></div>
+                        <SourcePanel
+                        
+                            sources={this.state.room}
+                            onDragStart={this.onDragStart} />
+
+                        <div> <h5> Zones : </h5></div>
+
+                        <SourcePanel
+                        
+                        sources={this.state.zone}
+                        onDragStart={this.onDragStart}
+                        
+                    />
+                    <div><h5>Sensor List</h5></div>
+                     <SourcePanel
+                            sources={this.state.TemperatureSensor}
+                            onDragStart={this.onDragStart}  
+                        />
+
                     </div>
                     <div className="col-sm-4 workspace-panel m-1">
                         Workspace
@@ -89,11 +100,8 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
-           
         );
-       
     }
 }
 

@@ -89,11 +89,10 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
            
         );
-       
+        <p className="App-intro">;{this.state.apiResponse}</p>
     }
 }
 

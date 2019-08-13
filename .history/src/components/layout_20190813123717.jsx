@@ -6,7 +6,7 @@ import WorkSpace from "./workspace";
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.state = { apiResponse: "hello world" };
+        this.state = { apiResponse: "" };
     }
     
     callAPI() {
@@ -89,11 +89,8 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
-           
         );
-       
     }
 }
 

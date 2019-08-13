@@ -1,23 +1,9 @@
 import React, {Component} from 'react';
 import SourcePanel from "./sourcepanel";
 import WorkSpace from "./workspace";
-
+import Axios from 'axios';
 
 class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "hello world" };
-    }
-    
-    callAPI() {
-        fetch("http://localhost:8300/house")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
-    }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
 
     state = {
         inputSources: [
@@ -37,8 +23,26 @@ class Layout extends Component {
         workspaceSources: [],
     };
 
+    componentDidMount() {
+        this.getDataFromDb();
+        if (!this.state.intervalIsSet) {
+          let interval = setInterval(this.getDataFromDb, 1000);
+          this.setState({ intervalIsSet: interval });
+        }
+      }
 
+      componentWillUnmount() {
+        if (this.state.intervalIsSet) {
+          clearInterval(this.state.intervalIsSet);
+          this.setState({ intervalIsSet: null });
+        }
+      }
 
+      getDataFromDb = () => {
+        fetch('http://localhost:3001/api/getData')
+          .then((data) => data.json())
+          .then((res) => this.setState({ data: res.data }));
+      };
 
 
     onDragStart = (e, source) => {
@@ -89,11 +93,8 @@ class Layout extends Component {
                     <div className="col right-panel m-1">Output</div>
                 </div>
                 <div className="container footer m-1">Footer</div>
-                <p className="App-intro">;{this.state.apiResponse}</p>
             </div>
-           
         );
-       
     }
 }
 

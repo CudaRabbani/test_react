@@ -23,8 +23,8 @@ class WorkSpace extends Component {
         {id: 'age', label: 'Age', type: 'text'}
     ];
     houseForm = [
-        {id: 'house_number', label: 'House Number', type: 'text'},
-        {id: 'house_name', label: 'House Name', type: 'text'}
+        {id: 'house_no', label: 'House No', type: 'text'},
+        {id: 'street_no', label: 'Street No', type: 'text'}
     ];
     bedroomForm = [
         {id: 'bedroom_name', label: 'Room Name', type: 'text'},
@@ -55,15 +55,15 @@ class WorkSpace extends Component {
         {id: 'foor_type', label: 'zone Type', type: 'text'}
     ];
     tempSensorForm = [
-        {id: 'temp_name', label: 'temosensor Name', type: 'text'},
+        {id: 'temp_name', label: 'sensor Name', type: 'text'},
         {id: 'temp_type', label: 'sensor Type', type: 'text'}
     ];
     pressureSensorForm = [
-        {id: 'pressure_name', label: 'pressuresensor Name', type: 'text'},
+        {id: 'pressure_name', label: 'sensor Name', type: 'text'},
         {id: 'pressure_type', label: 'sensor Type', type: 'text'}
     ];
     lightSensorForm = [
-        {id: 'light_name', label: 'lightsensor Name', type: 'text'},
+        {id: 'light_name', label: 'sensor Name', type: 'text'},
         {id: 'light_type', label: 'sensor Type', type: 'text'}
     ];
 
@@ -82,7 +82,7 @@ class WorkSpace extends Component {
             doorZoneModal: false,
             tempSensorModal: false,
             pressureSensorModal: false,
-            lightSensorModal: false,
+            lightSensorModal: false
         };
         this.setState({currentModals});
         switch (sourceId) {
@@ -133,7 +133,7 @@ class WorkSpace extends Component {
                 break;
             case 12:
                 const lightSensor = this.state.lightSensorModal;
-                this.setState({lightSensorModal: !lightSensor});
+                this.setState({lightSesnorModal: !lightSensor});
                 break;
             default:
                 break;

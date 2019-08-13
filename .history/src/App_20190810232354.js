@@ -4,7 +4,6 @@ import Layout from "./components/layout";
 import Header from "./components/header";
 
 
-
 function App() {
     console.log (React.version);
   return (
